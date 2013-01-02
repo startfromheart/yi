@@ -1,0 +1,127 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=gb2312" />
+
+<title>公司列表 - Powered By Nianway.com</title>
+
+<meta name="Author" content="Nianway.com" />
+
+<meta name="Copyright" content="Nianway.com" />
+
+<link href="template/base.css" rel="stylesheet" type="text/css" />
+
+<link href="template/admin.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="template/jquery.js"></script>
+
+<script type="text/javascript" src="template/jquery.pager.js"></script>
+
+<script type="text/javascript" src="template/base.js"></script>
+
+<script type="text/javascript" src="template/admin.js"></script>
+
+</head>
+
+<body class="list">
+
+	<div class="bar">支付方式列表&nbsp;总记录数: 2 (共1页)</div>
+
+	<div class="body">
+
+		<form id="listForm" action="category.htm" method="post">
+
+			<div class="listBar">
+
+				<input type="button" class="formButton"
+					onclick="location.href='category.htm?act=add'" value="添加类别"
+					hidefocus /> &nbsp;&nbsp; <label>查找: </label> <select
+					name="pager.searchBy">
+
+					<option value="name">方式名称</option>
+
+				</select> <input type="text" name="pager.keyword" value="" /> <input
+					type="button" id="searchButton" class="formButton" value="搜 索"
+					hidefocus /> &nbsp;&nbsp; <label>每页显示: </label> <select
+					name="pager.pageSize" id="pageSize">
+
+					<option value="10">10</option>
+
+					<option value="20" selected>20</option>
+
+					<option value="50">50</option>
+
+					<option value="100">100</option>
+
+				</select>
+
+			</div>
+
+			<table id="listTable" class="listTable">
+
+				<tr>
+
+					<th class="check"><input type="checkbox" class="allCheck" />
+
+					</th>
+
+					<th><a href="#" class="sort" name="name" hidefocus>名称</a></th>
+
+					<th><a href="#" class="sort" name="orderList" hidefocus>排序</a>
+
+					</th>
+
+					<th><span>操作</span></th>
+
+				</tr>
+				#set ($i=0) #foreach($category in $categoryList) #set($i=$i+1)
+
+				<tr>
+
+					<td><input type="checkbox" name="ids"
+						value="$category.categoryId" /></td>
+
+					<td>$category.categoryName</td>
+
+					<td>$i</td>
+
+					<td><a
+						href="category.htm?act=edit&categoryId=$category.categoryId"
+						title="编辑">[编辑]</a></td>
+
+				</tr>
+				#end
+
+			</table>
+
+			<div class="pagerBar">
+
+				<div class="delete">
+
+					<input type="button" id="deleteButton" class="formButton"
+						url="payment_config!delete.action" value="删 除" disabled hidefocus />
+
+				</div>
+
+				<div class="pager">
+
+					<span id="pager"></span> <input type="hidden"
+						name="pager.pageNumber" id="pageNumber" value="1" /> <input
+						type="hidden" name="pager.orderBy" id="orderBy" value="orderList" />
+
+					<input type="hidden" name="pager.order" id="order" value="asc" />
+				</div>
+
+				<div>
+		</form>
+
+	</div>
+
+</body>
+
+</html>
+

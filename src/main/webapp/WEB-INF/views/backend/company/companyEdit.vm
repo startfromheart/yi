@@ -1,0 +1,112 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=gb2312" />
+
+<title>编辑娱乐公司 - Powered By Nianway.com</title>
+
+<meta name="Author" content="Nianway.com" />
+
+<meta name="Copyright" content="Nianway.com" />
+
+<link href="template/base.css" rel="stylesheet" type="text/css" />
+
+<link href="template/admin.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="template/jquery.js"></script>
+
+<script type="text/javascript" src="template/jquery.validate.js"></script>
+
+<script type="text/javascript" src="template/jquery.validate.methods.js"></script>
+
+<script type="text/javascript" src="template/kindeditor.js"></script>
+
+<script type="text/javascript" src="template/base.js"></script>
+
+<script type="text/javascript" src="template/admin/js/admin.js"></script>
+
+
+
+</head>
+
+<body class="input">
+
+	<div class="bar">
+
+		编辑娱乐公司
+
+	</div>
+
+	<div id="validateErrorContainer" class="validateErrorContainer">
+
+		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+
+		<ul></ul>
+
+	</div>
+
+	<div class="body">
+
+		<form id="validateForm" action="company.htm" method="post">
+
+			<input type="hidden" name="act" value="edit"/>
+			
+			<input type="hidden" name="companyId" value="$company.companyId"/>
+
+			<table class="inputTable">
+
+				<tr>
+
+					<th>
+
+						公司名称: 
+
+					</th>
+
+					<td>
+
+						<input type="text" name="companyName" class="formText" value="$company.companyName" />
+
+						<label class="requireField">*</label>
+
+					</td>
+
+				</tr>
+
+				<tr>
+
+					<th>
+
+						公司介绍: 
+
+					</th>
+
+					<td>
+
+						<textarea name="companyIntroduce">$company.companyIntroduce</textarea>
+
+					</td>
+
+				</tr>
+
+			</table>
+
+			<div class="buttonArea">
+
+				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
+
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+
+			</div>
+
+		</form>
+
+	</div>
+
+</body>
+
+</html>

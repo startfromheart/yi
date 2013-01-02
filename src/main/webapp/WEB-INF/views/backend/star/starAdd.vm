@@ -1,0 +1,186 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=gb2312" />
+
+<title>添加/编辑配送方式 - Powered By Nianway.com</title>
+
+<meta name="Author" content="Nianway.com" />
+
+<meta name="Copyright" content="Nianway.com" />
+
+<link href="template/base.css" rel="stylesheet" type="text/css" />
+
+<link href="template/admin.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="template/jquery.js"></script>
+
+<script type="text/javascript" src="template/jquery.validate.js"></script>
+
+<script type="text/javascript" src="template/jquery.validate.methods.js"></script>
+
+<script type="text/javascript" src="template/kindeditor.js"></script>
+
+<script type="text/javascript" src="template/base.js"></script>
+
+<script type="text/javascript" src="template/admin/js/admin.js"></script>
+
+
+
+</head>
+
+<body class="input">
+
+	<div class="bar">
+
+		添加明星
+
+	</div>
+
+	<div id="validateErrorContainer" class="validateErrorContainer">
+
+		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+
+		<ul></ul>
+
+	</div>
+
+	<div class="body">
+
+		<form id="validateForm" action="star.htm" method="post">
+
+			<input type="hidden" name="act" value="add"/>
+
+			<table class="inputTable">
+
+				<tr>
+
+					<th>
+
+						名星名称: 
+
+					</th>
+
+					<td>
+
+						<input type="text" name="starName" class="formText" value="" />
+
+						<label class="requireField">*</label>
+
+					</td>
+
+				</tr>
+				
+				<tr>
+
+					<th>
+
+						名星艺名1： 
+
+					</th>
+
+					<td>
+
+						<input type="text" name="starAliasName1" class="formText" value="" />
+
+						<label class="requireField">*</label>
+
+					</td>
+
+				</tr>
+				
+				<tr>
+
+					<th>
+
+						名星艺名2: 
+
+					</th>
+
+					<td>
+
+						<input type="text" name="starAliasName2" class="formText" value="" />
+
+						<label class="requireField">*</label>
+
+					</td>
+
+				</tr>
+				
+				<tr>
+
+					<th>
+
+						名星性别: 
+
+					</th>
+
+					<td>
+
+						<select name="sex" >
+							<option value="0">男</option>
+							<option value="1">女</option>
+						</select>
+
+						<label class="requireField">*</label>
+
+					</td>
+
+				</tr>
+				
+
+				<tr>
+
+					<th>
+
+						国籍: 
+
+					</th>
+
+					<td>
+
+						<input type="text" name="country" class="formText" value="中国" />
+
+						<label class="requireField">*</label>
+
+					</td>
+
+				</tr>
+
+				<tr>
+
+					<th>
+
+						名星介绍: 
+
+					</th>
+
+					<td>
+
+						<textarea name="starIntroduce" id="editor" class="editor"></textarea>
+
+					</td>
+
+				</tr>
+
+			</table>
+
+			<div class="buttonArea">
+
+				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
+
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+
+			</div>
+
+		</form>
+
+	</div>
+
+</body>
+
+</html>

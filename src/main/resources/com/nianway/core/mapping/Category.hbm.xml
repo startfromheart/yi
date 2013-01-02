@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.nianway.core.mapping">
+	<class name="Category" table="CATEGORYS">
+		<id name="categoryId" column="categoryId">
+			<generator class="uuid.hex" />
+		</id>
+		<property name="categoryName" column="categoryName" />
+		<property name="state" type="integer">
+			<column name="state" />
+		</property>
+		<property name="categoryIntroduce" column="categoryIntroduce" />
+	</class>
+</hibernate-mapping>

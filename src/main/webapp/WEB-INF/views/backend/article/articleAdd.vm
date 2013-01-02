@@ -1,0 +1,103 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=gb2312" />
+<title>添加/编辑配送方式 - Powered By Nianway.com</title>
+<meta name="Author" content="Nianway.com" />
+<meta name="Copyright" content="Nianway.com" />
+<link href="template/base.css" rel="stylesheet" type="text/css" />
+<link href="template/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="template/js/jquery.js"></script>
+<script type="text/javascript" src="template/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script>
+
+</head>
+<body class="input">
+	<div class="bar">
+		添加歌曲
+	</div>
+	<div id="validateErrorContainer" class="validateErrorContainer">
+		<div class="validateErrorTitle">以下信息填写有误,请重新填写</div>
+		<ul></ul>
+	</div>
+
+	<div class="body">
+		<form id="validateForm" action="article.htm" method="post">
+			<input type="hidden" name="act" value="add"/>
+			<input id="articleUrl" type="hidden" name="articleUrl" value=""/>
+			<table class="inputTable">
+				<tr>
+					<th>
+						歌曲名称: 
+					</th>
+					<td>
+						<input type="text" name="articleName" class="formText" value="" />
+						<label class="requireField">*</label>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						歌曲文件: 
+					</th>
+					<td>
+						<iframe src="articleFile.htm?act=file" height="30" width="800" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"></iframe>
+					</td>
+
+				</tr>
+				
+				
+				<tr>
+
+					<th>
+
+						歌曲类别: 
+
+					</th>
+
+					<td>
+
+						<select name="categoryId">
+							<option selected="true" value="0">男歌手</option>
+						</select>
+
+						<label class="requireField">*</label>
+
+					</td>
+
+				</tr>
+				<tr>
+
+					<th>
+
+						歌曲介绍: 
+
+					</th>
+
+					<td>
+
+						
+						<textarea class="ckeditor" cols="80" id="articleIntroduce" name="articleIntroduce" rows="10">&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;</textarea>
+
+					</td>
+
+				</tr>
+
+			</table>
+
+			<div class="buttonArea">
+
+				<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
+
+				<input type="button" class="formButton" onclick="window.history.back(); return false;" value="返  回" hidefocus />
+
+			</div>
+
+		</form>
+
+	</div>
+
+</body>
+
+</html>

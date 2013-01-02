@@ -1,0 +1,25 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=gb2312" />
+<title>添加/编辑配送方式 - Powered By Nianway.com</title>
+<meta name="Author" content="Nianway.com" />
+<meta name="Copyright" content="Nianway.com" />
+<link href="template/base.css" rel="stylesheet" type="text/css" />
+<link href="template/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="template/js/jquery.js"></script>
+<script type="text/javascript" src="template/js/jquery.validate.js"></script>
+</head>
+<body class="input">
+	<div class="body">
+		<form id="validateForm" action="articleFile.htm" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="act" value="upload"/>
+			<input type="hidden" name="articleId" value="upload"/>
+			<input type="file" name="articleFile"  value="" />
+			<input type="submit" class="formButton" value="确  定" hidefocus />&nbsp;&nbsp;
+		</form>
+	</div>
+</body>
+</html>

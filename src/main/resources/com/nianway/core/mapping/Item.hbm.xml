@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.nianway.core.mapping">
+	<class name="Item" table="ITEMS">
+		<id name="itemId" column="itemId">
+			<generator class="uuid.hex" />
+		</id>
+		<property name="itemName" column="itemName" />
+		<property name="itemUrl" column="itemUrl" />
+		<property name="categoryId">
+			<column name="categoryId" />
+		</property>
+		<property name="state" type="integer">
+			<column name="state" />
+		</property>
+		<property name="itemIntroduce" column="itemIntroduce" />
+	</class>
+</hibernate-mapping>

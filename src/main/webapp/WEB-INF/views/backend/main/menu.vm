@@ -1,0 +1,46 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=gb2312" />
+<title>管理菜单 - Powered By Nianway.com</title>
+<meta name="Author" content="Nianway.com" />
+<meta name="Copyright" content="Nianway.com" />
+<link href="template/base.css" rel="stylesheet" type="text/css" />
+<link href="template/admin.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="menu">
+	<div class="body">
+			<dl>
+				<dt>
+					<span>基础设置</span>
+				</dt>
+					<dd>
+						<a href="company.htm" target="mainFrame">公司设置</a>
+					</dd>
+					<dd>
+						<a href="star.htm" target="mainFrame">明星设置</a>
+					</dd>
+			</dl>
+			<dl>
+				<dt>
+					<span>音乐管理</span>
+				</dt>
+				<dd>
+					<a href="category.htm" target="mainFrame">类别管理</a>
+				</dd>
+				<dd>
+					<a href="item.htm" target="mainFrame">歌曲管理</a>
+				</dd>
+			</dl>
+			<dl>
+				<dt>
+					<span>文章管理</span>
+				</dt>
+				<dd>
+					<a href="article.htm" target="mainFrame">文章管理</a>
+				</dd>
+			</dl>
+	</div>
+</body>
+</html>

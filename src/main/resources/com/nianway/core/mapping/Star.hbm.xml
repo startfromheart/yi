@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.nianway.core.mapping">
+	<class name="Star" table="STARS">
+		<id name="starId" column="starId">
+			<generator class="uuid.hex" />
+		</id>
+		<property name="starName" column="starName" />
+		<property name="starAliasName1" column="starAliasName1" />
+		<property name="starAliasName2" column="starAliasName2" />
+		<property name="companyId">
+			<column name="companyId" />
+		</property>
+		<property name="focusTime" type="integer">
+			<column name="focusTime" />
+		</property>
+		<property name="sex" type="integer">
+			<column name="sex" />
+		</property>
+		<property name="state" type="integer">
+			<column name="state" />
+		</property>
+		<property name="country" column="country" />
+		<property name="starIntroduce" column="starIntroduce" />
+	</class>
+</hibernate-mapping>

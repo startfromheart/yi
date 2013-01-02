@@ -1,0 +1,16 @@
+<?xml version="1.0"?>  
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+	<!-- MsSqlServer DataSource -->
+	<New id="misc" class="org.mortbay.jetty.plus.naming.Resource">
+		<Arg>java:jboss/datasources/jdbc/misc</Arg>
+		<Arg>
+			<New class="org.apache.commons.dbcp.BasicDataSource">
+				<Set name="driverClassName">com.mysql.jdbc.Driver</Set>
+				<Set name="url">jdbc:mysql://pl4fec1a0d6ab08.mysql.rds.aliyuncs.com:3306/pl4fec1a0d6ab08</Set>
+				<Set name="username">pl4fec1a0d6ab08</Set>
+				<Set name="password">pl4fec1a0d6ab08</Set>
+			</New>
+		</Arg>
+	</New>
+</Configure>

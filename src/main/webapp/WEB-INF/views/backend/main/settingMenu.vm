@@ -1,0 +1,70 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="content-type" content="text/html; charset=gb2312" />
+
+<title>管理菜单 - Powered By Nianway.com</title>
+
+<meta name="Author" content="Nianway.com" />
+
+<meta name="Copyright" content="Nianway.com" />
+
+<link href="template/base.css" rel="stylesheet" type="text/css" />
+
+<link href="template/admin.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body class="menu">
+
+	<div class="body">
+
+			<dl>
+
+				<dt>
+
+					<span>基本设置</span>
+
+				</dt>
+
+					<dd>
+						<a href="variable.htm" target="mainFrame">变量设置</a>
+					</dd>
+					<dd>
+						<a href="switcher.htm" target="mainFrame">开关设置</a>
+					</dd>
+
+			</dl>
+
+			<dl>
+
+				<dt>
+
+					<span>高级设置</span>
+
+				</dt>
+
+				<dd>
+
+					<a href="role.htm" target="mainFrame">角色管理</a>
+
+				</dd>
+
+
+				<dd>
+
+					<a href="funtion.htm" target="mainFrame">功能管理</a>
+
+				</dd>
+
+			</dl>
+
+	</div>
+
+</body>
+
+</html>
