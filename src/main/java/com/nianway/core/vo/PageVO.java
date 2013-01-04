@@ -12,6 +12,10 @@ import com.nianway.core.BizConstants;
  * 
  */
 public class PageVO implements Serializable {
+	/**
+	 * serialVersionUID for PageVO
+	 */
+	private static final long serialVersionUID = -5123448845389333644L;
 	private PageForm pageForm;
 	private long rowCount;
 

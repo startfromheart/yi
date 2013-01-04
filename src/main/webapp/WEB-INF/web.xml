@@ -36,7 +36,10 @@
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 
-
+	<filter>
+		<filter-name>initFilter</filter-name>
+		<filter-class>com.nianway.core.filter.InitFilter</filter-class>
+	</filter>
 
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
