@@ -1,0 +1,10 @@
+drop table IF EXISTS nianway_article;
+create table nianway_article(
+		articleId VARCHAR(128) NOT NULL,
+		articleName VARCHAR(256) NOT NULL,
+		state INTEGER DEFAULT 0 NOT NULL,
+		articleContent VARCHAR(256) NOT NULL
+);
+insert into nianway_article (articleId,articleName, state, articleContent ) values ('0', '2', '3', '4');
+insert into nianway_article (articleId,articleName, state, articleContent ) values ('1', '2', '0', '4');
+insert into nianway_article (articleId,articleName, state, articleContent ) values ('3', '2', '0', '4');

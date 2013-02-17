@@ -12,6 +12,9 @@
     http://www.springframework.org/schema/mvc  
     http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
+	<bean id="hsqlHelper" class="com.nianway.core.db.HsqlHelper"></bean>
+
+
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName">
 			<value>java:jboss/datasources/jdbc/misc</value>

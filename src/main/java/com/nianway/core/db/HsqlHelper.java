@@ -3,25 +3,29 @@
  */
 package com.nianway.core.db;
 
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
 /**
  * HSQL∆Ù∂Ø∞Ô÷˙¿‡
  * 
  * @author zhizhang.zhou
  * 
  */
-public class HsqlHelper {
+public class HsqlHelper implements InitializingBean, DisposableBean {
+	
+	
 
-	private final static String DATABASE_NAME = "webdemo";
 
-	private final static String DATABASE_PORT = "9002";
-
-	public void start() {
-
-	}
-
-	public void stop() {
-		// TODO Auto-generated method stub
+	@Override
+	public void destroy() throws Exception {
 
 	}
 
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		
+		
+
+	}
 }

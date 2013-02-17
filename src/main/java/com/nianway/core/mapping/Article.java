@@ -10,6 +10,10 @@ import java.io.Serializable;
  * 
  */
 public class Article implements Serializable {
+	/**
+	 * serialVersionUID for Article
+	 */
+	private static final long serialVersionUID = -1321404629068103982L;
 	private String articleId;
 	private String categoryId;
 	private String articleName;
@@ -49,11 +53,11 @@ public class Article implements Serializable {
 		this.articleUrl = articleUrl;
 	}
 
-	public String getArticleIntroduce() {
+	public String getArticleContent() {
 		return articleContent;
 	}
 
-	public void setArticleIntroduce(String articleContent) {
+	public void setArticleContent(String articleContent) {
 		this.articleContent = articleContent;
 	}
 

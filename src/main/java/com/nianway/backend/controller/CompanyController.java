@@ -26,7 +26,7 @@ import com.nianway.core.mapping.Company;
 @Controller
 public class CompanyController {
 
-	private static final String VIEW_NAME = "company";
+	private static final String VIEW_NAME = "backend/company/company";
 	private static final String ADD_NAME = "companyAdd";
 	private static final String EDIT_NAME = "companyEdit";
 

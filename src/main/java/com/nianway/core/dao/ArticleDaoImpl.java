@@ -33,7 +33,7 @@ public class ArticleDaoImpl {
 	}
 
 	/**
-	 * 查询歌手
+	 * 查询文章
 	 */
 	public QueryResult queryArticle(PageForm pageForm) {
 
@@ -150,13 +150,10 @@ public class ArticleDaoImpl {
 		try {
 			session.beginTransaction();
 			session.update(article);
-
 			session.getTransaction().commit();
-
 		} catch (Exception ex) {
 			session.getTransaction().rollback();
 		}
-
 	}
 
 	public Article delete(String[] ids) {
