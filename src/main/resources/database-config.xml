@@ -38,6 +38,8 @@
 				<value>com/nianway/core/mapping/Company.hbm.xml</value>
 				<value>com/nianway/core/mapping/Item.hbm.xml</value>
 				<value>com/nianway/core/mapping/Category.hbm.xml</value>
+				<value>com/nianway/core/mapping/UserInfo.hbm.xml</value>
+				<value>com/nianway/core/mapping/Article.hbm.xml</value>
 			</list>
 		</property>
 

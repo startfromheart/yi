@@ -10,13 +10,13 @@ import java.sql.Statement;
 
 import junit.framework.TestCase;
 
-public class ArticleTest extends TestCase {
+public class UserInfoTest extends TestCase {
 	final static int BUFFER_SIZE = 4096;
 
 	public void testCreateTable() throws Exception {
 
-		InputStream inputStream = ArticleTest.class
-				.getResourceAsStream("article_table");
+		InputStream inputStream = UserInfoTest.class
+				.getResourceAsStream("userinfo_table");
 
 		ByteArrayOutputStream outStream = new ByteArrayOutputStream();
 

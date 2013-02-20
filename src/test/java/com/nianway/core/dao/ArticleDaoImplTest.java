@@ -3,41 +3,23 @@
  */
 package com.nianway.core.dao;
 
-import junit.framework.TestCase;
-
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import junit.framework.Assert;
 
 import com.nianway.core.mapping.Article;
 import com.nianway.core.vo.PageForm;
+import com.nianway.core.vo.QueryResult;
 
 /**
  * @author zhizhang.zhou
  * 
  */
-public class ArticleDaoImplTest extends TestCase {
+public class ArticleDaoImplTest extends DaoTest {
 
 	ArticleDaoImpl articleDaoImpl = new ArticleDaoImpl();
 
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-
-		Configuration config = new Configuration()
-				.setProperty("hibernate.dialect",
-						"org.hibernate.dialect.HSQLDialect")
-				.setProperty("hibernate.connection.driver_class",
-						"org.hsqldb.jdbcDriver")
-				.setProperty("hibernate.connection.url",
-						"jdbc:hsqldb:file:D:/UserData/zhizhang.zhou/dbFolder/demo")
-				.setProperty("hibernate.connection.username", "sa")
-				.setProperty("hibernate.connection.password", "")
-				.setProperty("hibernate.connection.pool_size", "1")
-				.setProperty("hibernate.connection.autocommit", "true")
-				.setProperty("hibernate.show_sql", "true")
-				.setProperty("hibernate.current_session_context_class", "thread")
-				.addClass(Article.class);
-		SessionFactory sessionFactory = config.buildSessionFactory();
 		articleDaoImpl.setSessionFactory(sessionFactory);
 	}
 
@@ -51,16 +33,10 @@ public class ArticleDaoImplTest extends TestCase {
 		pageForm.setAscending(false);
 		pageForm.setOrderBy("articleId");
 		pageForm.setPageNo(1);
-		articleDaoImpl.queryArticle(pageForm);
-	}
+		QueryResult queryResult = articleDaoImpl.queryArticle(pageForm);
 
-	/**
-	 * Test method for
-	 * {@link com.nianway.core.dao.ArticleDaoImpl#countArticle(com.nianway.core.vo.PageForm)}
-	 * .
-	 */
-	public void testCountArticle() {
-		fail("Not yet implemented");
+		Assert.assertNotNull(queryResult);
+		Assert.assertTrue(queryResult.getPageCount() >= 1);
 	}
 
 	/**
@@ -69,16 +45,25 @@ public class ArticleDaoImplTest extends TestCase {
 	 * .
 	 */
 	public void testQueryArticleById() {
-		fail("Not yet implemented");
+		Article article = articleDaoImpl
+				.queryArticleById("8a8fe4aa3cebcc0a013cebcc2bc80000");
+		Assert.assertNotNull(article);
 	}
 
 	/**
 	 * Test method for
 	 * {@link com.nianway.core.dao.ArticleDaoImpl#add(com.nianway.core.mapping.Article)}
 	 * .
+	 * 
+	 * @throws InterruptedException
 	 */
-	public void testAdd() {
-		fail("Not yet implemented");
+	public void testAdd() throws InterruptedException {
+		Article article = new Article();
+		article.setArticleName("登录中心dd");
+		article.setArticleContent("登录中心的内容是什么");
+		article.setState(0);
+		articleDaoImpl.add(article);
+		Thread.sleep(1000);
 	}
 
 	/**
@@ -87,7 +72,9 @@ public class ArticleDaoImplTest extends TestCase {
 	 * .
 	 */
 	public void testEdit() {
-		fail("Not yet implemented");
+		Article article = articleDaoImpl
+				.queryArticleById("8a8fe4aa3cebcc0a013cebcc2bc80000");
+		articleDaoImpl.edit(article);
 	}
 
 	/**
@@ -95,7 +82,14 @@ public class ArticleDaoImplTest extends TestCase {
 	 * {@link com.nianway.core.dao.ArticleDaoImpl#delete(java.lang.String[])}.
 	 */
 	public void testDelete() {
-		fail("Not yet implemented");
+		Article article = new Article();
+		article.setArticleName("登录中心dd");
+		article.setArticleContent("登录中心的内容是什么");
+		article.setState(0);
+		articleDaoImpl.add(article);
+
+		String articleId = article.getArticleId();
+		articleDaoImpl.delete(new String[] { articleId });
 	}
 
 }

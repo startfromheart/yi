@@ -4,15 +4,17 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping package="com.nianway.core.mapping">
-	<class name="Article" table="nianway_article">
-		<id name="articleId" column="articleId">
+	<class name="UserInfo" table="nianway_userinfo">
+		<id name="userId" column="userId">
 			<generator class="uuid.hex" />
 		</id>
-		<property name="categoryId" column="categoryId" />
-		<property name="articleName" column="articleName" />
+		<property name="userName" column="username" />
 		<property name="state" type="integer">
 			<column name="state" />
 		</property>
-		<property name="articleContent" column="articleContent" />
+		<property name="nickName" column="nickName" />
+		<property name="password" column="password" />
+		<property name="expired" column="expired" />
+		<property name="locked" column="locked" />
 	</class>
 </hibernate-mapping>

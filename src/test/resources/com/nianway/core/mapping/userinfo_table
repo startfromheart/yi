@@ -1,0 +1,12 @@
+drop table IF EXISTS nianway_userinfo;
+create table nianway_userinfo(
+		userId VARCHAR(128) NOT NULL,
+		userName VARCHAR(256) NOT NULL,
+		nickName VARCHAR(256) NOT NULL,
+		password VARCHAR(256) NOT NULL,
+		state INTEGER DEFAULT 0 NOT NULL,
+		expired INTEGER DEFAULT 0 NOT NULL,
+		locked INTEGER DEFAULT 0 NOT NULL
+);
+insert into nianway_userinfo (userId, userName, nickName, password, state, expired, locked ) values ('0', 'administrator', 'administrator/administrator@1982', '07a130111f1f911148fc3fa252add84a89fefb39fa4559648a08543f1b79cfbd74dfa6a05e389fc5', '4', '4', '4');
+insert into nianway_userinfo (userId, userName, nickName, password, state, expired, locked ) values ('1', 'operator', 'operator/operator@1982', '270bbd890ad86ad4847a49c3b0058ccc3c4c9cfee31446b3cf032c0d4d15354b36473c0f063c6ce7', '4', '4', '4');

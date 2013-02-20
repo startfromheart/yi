@@ -6,11 +6,15 @@ package com.nianway.core.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import com.nianway.core.BizConstants;
@@ -26,6 +30,10 @@ import com.nianway.core.vo.QueryResult;
 @Repository
 public class ArticleDaoImpl {
 
+	/** 日志 */
+	private static final Logger LOGGER = LoggerFactory
+			.getLogger(ArticleDaoImpl.class);
+
 	private SessionFactory sessionFactory;
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
@@ -33,72 +41,65 @@ public class ArticleDaoImpl {
 	}
 
 	/**
-	 * 查询文章
+	 * 获取查询文章结果
 	 */
 	public QueryResult queryArticle(PageForm pageForm) {
 
-		QueryResult queryResult = null;
+		QueryResult queryResult = new QueryResult();
 		PageVO pageVO = new PageVO();
 		pageVO.setPageForm(pageForm);
+		long rowCount = countArticle(pageForm);
+		pageVO.setRowCount(rowCount);
+		List articleList = getArticleList(pageForm);
+		queryResult.setResult(articleList);
+		queryResult = new QueryResult();
+		queryResult.setPageVO(pageVO);
+		return queryResult;
+	}
 
-		Session session = this.sessionFactory.getCurrentSession();
+	private List getArticleList(PageForm pageForm) {
+		Session session = this.sessionFactory.openSession();
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Article.class);
+		criteria.add(Restrictions.eq("state", 0));
+		Order order = null;
+		if (pageForm.isAscending()) {
+			order = Order.asc(pageForm.getOrderBy());
+		} else {
+			order = Order.desc(pageForm.getOrderBy());
+		}
+		criteria.addOrder(order);
+		criteria.setFirstResult(pageForm.getFirstResult());
+		criteria.setMaxResults(BizConstants.pageSize);
+		@SuppressWarnings("rawtypes")
+		List articleList = criteria.list();
 		try {
-			session.beginTransaction();
-			Criteria criteria = session.createCriteria(Article.class);
-			criteria.add(Restrictions.eq("state", 0));
-
-			criteria.setProjection(Projections.rowCount());
-
-			long rowCount = (Long) criteria.uniqueResult();
-			pageVO.setRowCount(rowCount);
-
-			queryResult = new QueryResult();
-			queryResult.setPageVO(pageVO);
-
-			criteria.setProjection(null);
-
-			Order order = null;
-			if (pageForm.isAscending()) {
-				order = Order.asc(pageForm.getOrderBy());
-			} else {
-				order = Order.desc(pageForm.getOrderBy());
-			}
-
-			criteria.addOrder(order);
-
-			criteria.setFirstResult(pageForm.getFirstResult());
-			criteria.setMaxResults(BizConstants.pageSize);
-
-			@SuppressWarnings("rawtypes")
-			List articleList = criteria.list();
-			queryResult.setResult(articleList);
-
 			session.getTransaction().commit();
-
-		} catch (Exception ex) {
+		} catch (HibernateException ex) {
+			LOGGER.error("查询出错", ex);
 			session.getTransaction().rollback();
 		}
-
-		return queryResult;
+		return articleList;
 	}
 
 	/**
 	 * 查询总条数
 	 */
 
-	public int countArticle(PageForm pageVO) {
-		int rowCount = 0;
+	private long countArticle(PageForm pageVO) {
+		long rowCount = 0;
 		Session session = this.sessionFactory.getCurrentSession();
+		session.beginTransaction();
+		Criteria criteria = session.createCriteria(Article.class);
+		criteria.add(Restrictions.eq("state", 0));
+		criteria.setProjection(Projections.rowCount());
+		rowCount = (Long) criteria.uniqueResult();
 		try {
-			session.beginTransaction();
-			Criteria criteria = session.createCriteria(Article.class);
-			criteria.add(Restrictions.eq("state", 0));
-
 			session.getTransaction().commit();
-		} catch (Exception ex) {
+		} catch (HibernateException ex) {
+			LOGGER.error("统计文章数量出错", ex);
 			session.getTransaction().rollback();
 		}
-
 		return rowCount;
 	}
 
@@ -111,36 +112,36 @@ public class ArticleDaoImpl {
 		Article article = null;
 
 		Session session = this.sessionFactory.getCurrentSession();
+
+		session.beginTransaction();
+		Object articleObj = session.get(Article.class, articleId);
+
+		if (articleObj == null) {
+			return null;
+		} else {
+			article = (Article) articleObj;
+		}
 		try {
-			session.beginTransaction();
-			Object articleObj = session.get(Article.class, articleId);
-
-			if (articleObj == null) {
-				return null;
-			} else {
-				article = (Article) articleObj;
-			}
-
 			session.getTransaction().commit();
-
-		} catch (Exception ex) {
+		} catch (HibernateException ex) {
+			LOGGER.error("根据Id获取文章出错", ex);
 			session.getTransaction().rollback();
 		}
-
 		return article;
 	}
 
 	public void add(Article article) {
-
 		Session session = this.sessionFactory.getCurrentSession();
+		Transaction tx = null;
 		try {
-			session.beginTransaction();
+			tx = session.beginTransaction();
 			session.save(article);
-
-			session.getTransaction().commit();
-
-		} catch (Exception ex) {
-			session.getTransaction().rollback();
+			tx.commit();
+		} catch (HibernateException ex) {
+			LOGGER.error("添加文章出错", ex);
+			if (tx != null) {
+				tx.rollback();
+			}
 		}
 
 	}
@@ -151,12 +152,13 @@ public class ArticleDaoImpl {
 			session.beginTransaction();
 			session.update(article);
 			session.getTransaction().commit();
-		} catch (Exception ex) {
+		} catch (HibernateException ex) {
+			LOGGER.error("编辑文章出错", ex);
 			session.getTransaction().rollback();
 		}
 	}
 
-	public Article delete(String[] ids) {
+	public void delete(String[] ids) {
 		Session session = this.sessionFactory.getCurrentSession();
 		try {
 			session.beginTransaction();
@@ -165,11 +167,10 @@ public class ArticleDaoImpl {
 				session.delete(articleObj);
 			}
 			session.getTransaction().commit();
-
-		} catch (Exception ex) {
+		} catch (HibernateException ex) {
+			LOGGER.error("删除文章出错", ex);
 			session.getTransaction().rollback();
 		}
-		return null;
 	}
 
 }
